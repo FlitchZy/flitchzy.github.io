@@ -1,0 +1,8 @@
+body{
+  font-family: postzify;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #f4f7fe;
+}

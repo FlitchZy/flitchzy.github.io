@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff" />
+  <title>PostZify</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+  
+<h1>This is homepage, You are here because you are signed in!</h1>
+<h2 id="uid"></h2>
+<h2 id="mail"></h2>
+<button id="sign_out_btn">signOut</button>
+
+</body>
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-auth.js";
+  import { getDatabase } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAgg5h6qqDlfQLJffHaRG7XP4k_giljLw4",
+      authDomain: "postzify-f9f54.firebaseapp.com",
+      databaseURL: "https://postzify-f9f54-default-rtdb.firebaseio.com",
+      projectId: "postzify-f9f54",
+      storageBucket: "postzify-f9f54.appspot.com",
+      messagingSenderId: "711623324421",
+      appId: "1:711623324421:web:174a804bb5cc71d436fd6c",
+      measurementId: "G-GC3TVTSP60"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+  
+  const userid = document.getElementById('uid');
+  const email = document.getElementById('mail');
+  
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      
+      const mail = user.email;
+      
+      userid.innerHTML = uid;
+      
+      email.innerHTML = mail;
+      // ...
+    } else {
+      // User is signed out
+      window.location.replace('index.html', '_blank');
+    }
+  });
+  
+  sign_out_btn.addEventListener('click',(e) => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    window.location.replace('index.html', '_blank');
+  }).catch((error) => {
+    // An error happened.
+    alert('An error occured, Please try again later!');
+  });
+});
+</script>
+</html>
