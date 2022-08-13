@@ -73,7 +73,8 @@
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        alert('SignUp Completed: ', auth.currentUser);
+        const curUser = user.currentUser;
+        alert('SignUp Completed:', curUser);
         window.location.replace('home.html', '_blank');
         // ...
       })
