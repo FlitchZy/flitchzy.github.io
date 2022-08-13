@@ -95,8 +95,9 @@
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        const username = user.displayName;
         // ...
-        alert('Logged in as:' user.diaplayName);
+        alert('Logged in as:', username);
         
       }).catch((error) => {
         // Handle Errors here.
