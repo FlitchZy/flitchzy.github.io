@@ -1,3 +1,3 @@
 function goto_signup(){
-window.location.replace("signup.html");
+window.location.replace("sign_up.html");
 }
