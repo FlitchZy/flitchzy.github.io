@@ -1,0 +1,15 @@
+body {
+  font-family: postzify;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #fff;
+  /*background-image:url('bg.png');*/
+}
+#bg{
+  width:100px;
+  height:50px;
+  background:transparent;
+  background-image:url('bg.png');
+}
